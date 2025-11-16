@@ -43,7 +43,7 @@ python3 tests/test_official.py
 
 ### Test Results
 
-![Test Results](results.png)
+![Test Results](results/results.png)
 
 Tested against the [official HuggingFace test cases](https://huggingface.co/datasets/DigitalUmuganda/Text_Normalization_Challenge_Unittests_Eng_Fra). All 5 test cases in the 0-1000 range pass with 100% accuracy.
 
