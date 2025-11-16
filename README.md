@@ -39,6 +39,11 @@ print(result)  # forty-two
 python tests/test_cardinal.py
 ```
 
+### Test Results
+
+![Test Results](results.png)
+
+Diagram showing the code passing test cases from the official HuggingFace test cases suite.
 ## Implementation details
 
 The grammar has lookup tables for:
