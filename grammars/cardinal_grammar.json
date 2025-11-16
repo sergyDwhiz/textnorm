@@ -1,0 +1,171 @@
+{
+  "metadata": {
+    "name": "cardinal_number_normalizer",
+    "version": "1.0.0",
+    "author": "Text Normalization Challenge",
+    "created": "2025-11-16 14:12:35",
+    "description": "FST-based cardinal number (0-1000) normalizer",
+    "language": "English",
+    "number_range": "0-1000"
+  },
+  "states": {
+    "ones": [
+      [
+        0,
+        "zero"
+      ],
+      [
+        1,
+        "one"
+      ],
+      [
+        2,
+        "two"
+      ],
+      [
+        3,
+        "three"
+      ],
+      [
+        4,
+        "four"
+      ],
+      [
+        5,
+        "five"
+      ],
+      [
+        6,
+        "six"
+      ],
+      [
+        7,
+        "seven"
+      ],
+      [
+        8,
+        "eight"
+      ],
+      [
+        9,
+        "nine"
+      ]
+    ],
+    "teens": [
+      [
+        0,
+        "ten"
+      ],
+      [
+        1,
+        "eleven"
+      ],
+      [
+        2,
+        "twelve"
+      ],
+      [
+        3,
+        "thirteen"
+      ],
+      [
+        4,
+        "fourteen"
+      ],
+      [
+        5,
+        "fifteen"
+      ],
+      [
+        6,
+        "sixteen"
+      ],
+      [
+        7,
+        "seventeen"
+      ],
+      [
+        8,
+        "eighteen"
+      ],
+      [
+        9,
+        "nineteen"
+      ]
+    ],
+    "tens": [
+      [
+        0,
+        ""
+      ],
+      [
+        1,
+        ""
+      ],
+      [
+        2,
+        "twenty"
+      ],
+      [
+        3,
+        "thirty"
+      ],
+      [
+        4,
+        "forty"
+      ],
+      [
+        5,
+        "fifty"
+      ],
+      [
+        6,
+        "sixty"
+      ],
+      [
+        7,
+        "seventy"
+      ],
+      [
+        8,
+        "eighty"
+      ],
+      [
+        9,
+        "ninety"
+      ]
+    ]
+  },
+  "transitions": {
+    "0": {
+      "target": "zero",
+      "type": "terminal"
+    },
+    "1-9": {
+      "target": "ones",
+      "type": "lookup"
+    },
+    "10-19": {
+      "target": "teens",
+      "type": "lookup"
+    },
+    "20-99": {
+      "target": "tens_compound",
+      "type": "composite"
+    },
+    "100-999": {
+      "target": "hundreds_compound",
+      "type": "composite"
+    },
+    "1000": {
+      "target": "one thousand",
+      "type": "terminal"
+    }
+  },
+  "rules": {
+    "single_digit": "Direct lookup in ones array",
+    "teens": "Direct lookup in teens array (offset by 10)",
+    "tens_compound": "tens[n//10] + '-' + ones[n%10]",
+    "hundreds": "ones[n//100] + ' hundred' + [recursive(n%100)]"
+  }
+}
