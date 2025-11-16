@@ -1,0 +1,8 @@
+The system was tested on 5 different scenarios with 100 unique sentences.
+Accuracy was 99.8% with an average WER of 0.002.
+In 1999, there were approximately 456 students enrolled.
+Room 305 has 25 seats and room 42 has 18 seats.
+The temperature was 0 degrees at midnight.
+She scored 89 points out of 100 in the test.
+There are 7 days in a week and 52 weeks in a year.
+The book has 234 pages and costs 15 dollars.

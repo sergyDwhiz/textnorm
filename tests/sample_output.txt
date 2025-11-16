@@ -1,0 +1,8 @@
+The system was tested on five different scenarios with one hundred unique sentences.
+Accuracy was ninety-nine.eight% with an average WER of zero.two.
+In 1999, there were approximately four hundred fifty-six students enrolled.
+Room three hundred five has twenty-five seats and room forty-two has eighteen seats.
+The temperature was zero degrees at midnight.
+She scored eighty-nine points out of one hundred in the test.
+There are seven days in a week and fifty-two weeks in a year.
+The book has two hundred thirty-four pages and costs fifteen dollars.
