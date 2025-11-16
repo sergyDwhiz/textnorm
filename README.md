@@ -4,10 +4,11 @@ Converts numbers from 0-1000 to words using FST approach.
 
 ## What it does
 
-It takes numbers in text and writes them out in plain lanaguage:
+It takes numbers in text and writes them out in plain language:
 E.g:
 - "I have 3 dogs" becomes "I have three dogs"
-- "Room 42" becomes "Room forty-two"
+- "Room 42" becomes "Room forty two"
+- "123" becomes "one hundred and twenty three"
 
 ## How to use
 
@@ -30,39 +31,32 @@ with open('grammars/cardinal_grammar.far', 'rb') as f:
     grammar = data['grammar']
 
 result = grammar.normalize_number("42")
-print(result)  # forty-two
+print(result)  # forty two
 ```
 
 ## Testing
 
-Run the custom test suite:
-```bash
-python tests/test_cardinal.py
-```
-
 Test against official HuggingFace dataset:
 ```bash
-python3 test_official.py
+python3 tests/test_official.py
 ```
 
 ### Test Results
 
 ![Test Results](results.png)
 
-Tested against the [official Digital Umuganda HuggingFace test cases](https://huggingface.co/datasets/DigitalUmuganda/Text_Normalization_Challenge_Unittests_Eng_Fra). All 5 test cases in the 0-1000 range pass with 100% accuracy.
+Tested against the [official HuggingFace test cases](https://huggingface.co/datasets/DigitalUmuganda/Text_Normalization_Challenge_Unittests_Eng_Fra). All 5 test cases in the 0-1000 range pass with 100% accuracy.
 
 ## Implementation details
 
-The grammar has lookup tables for:
-- digits 0-9
-- teens 10-19
-- tens (20, 30, 40 etc)
+Uses a pure Python FST-inspired approach with:
+- Lookup tables for digits (0-9), teens (10-19), and tens (20, 30, 40 etc)
+- Compositional rules to combine them (e.g., 42 = "forty" + " " + "two")
+- British English format: "and" in hundreds (e.g., "one hundred and twenty three")
+- Special handling for leading zeros (read digit-by-digit)
+- 1000 is hardcoded as "one thousand"
 
-Then combines them for bigger numbers. Like 42 = "forty" + "-" + "two".
-
-For hundreds it's similar, just adds "hundred" in the middle.
-
-1000 is just hardcoded as "one thousand".
+No external dependencies required.
 
 ## Requirements
 Python 3.7+ 

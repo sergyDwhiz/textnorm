@@ -3,7 +3,7 @@
     "name": "cardinal_number_normalizer",
     "version": "1.0.0",
     "author": "Text Normalization Challenge",
-    "created": "2025-11-16 14:12:35",
+    "created": "2025-11-16 15:32:01",
     "description": "FST-based cardinal number (0-1000) normalizer",
     "language": "English",
     "number_range": "0-1000"

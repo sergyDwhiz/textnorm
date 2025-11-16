@@ -1,0 +1,77 @@
+============================================================
+CARDINAL NUMBER GRAMMAR RULES (0-1000)
+============================================================
+
+## Single Digits (0-9)
+----------------------------------------
+0 -> zero
+1 -> one
+2 -> two
+3 -> three
+4 -> four
+5 -> five
+6 -> six
+7 -> seven
+8 -> eight
+9 -> nine
+
+## Teens (10-19)
+----------------------------------------
+10 -> ten
+11 -> eleven
+12 -> twelve
+13 -> thirteen
+14 -> fourteen
+15 -> fifteen
+16 -> sixteen
+17 -> seventeen
+18 -> eighteen
+19 -> nineteen
+
+## Tens (20-90)
+----------------------------------------
+20 -> twenty
+30 -> thirty
+40 -> forty
+50 -> fifty
+60 -> sixty
+70 -> seventy
+80 -> eighty
+90 -> ninety
+
+## Compound Numbers (21-99)
+----------------------------------------
+Pattern: tens[n//10] + '-' + ones[n%10]
+Examples:
+  21 -> twenty one
+  35 -> thirty five
+  42 -> forty two
+  56 -> fifty six
+  78 -> seventy eight
+  99 -> ninety nine
+
+## Hundreds (100-999)
+----------------------------------------
+Pattern: ones[n//100] + ' hundred' + [remainder]
+Examples:
+  100 -> one hundred
+  123 -> one hundred and twenty three
+  234 -> two hundred and thirty four
+  456 -> four hundred and fifty six
+  789 -> seven hundred and eighty nine
+  999 -> nine hundred and ninety nine
+
+## Thousand
+----------------------------------------
+1000 -> one thousand
+
+============================================================
+FST TRANSITION RULES
+============================================================
+
+State transitions:
+  START - (0-9) -> ONES_STATE -> OUTPUT
+  START - (1)(0-9) -> TEENS_STATE -> OUTPUT
+  START - (2-9)(0-9) -> TENS_STATE -> OUTPUT
+  START - (1-9)(0-9)(0-9) -> HUNDREDS_STATE -> OUTPUT
+  START - 1000 -> THOUSAND_STATE -> OUTPUT

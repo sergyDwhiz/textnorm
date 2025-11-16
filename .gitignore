@@ -1,1 +1,10 @@
 tests/test_cardinal.py
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+REPORT.md
+REPORT.html
+LICENSE
+results.png
+.venv/

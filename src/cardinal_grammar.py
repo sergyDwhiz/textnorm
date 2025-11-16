@@ -35,6 +35,10 @@ class CardinalGrammar:
             Written form of the number
         """
         try:
+            # Check for leading zeros - read digit by digit
+            if len(num_str) > 1 and num_str[0] == '0':
+                return ' '.join(self.ones[int(d)] for d in num_str)
+            
             num = int(num_str)
             
             if num < 0 or num > 1000:
@@ -64,7 +68,7 @@ class CardinalGrammar:
         if ones_digit == 0:
             return self.tens[tens_digit]
         else:
-            return f"{self.tens[tens_digit]}-{self.ones[ones_digit]}"
+            return f"{self.tens[tens_digit]} {self.ones[ones_digit]}"
     
     def _three_digits(self, num):
         """Convert three-digit number (100-999) to words."""
@@ -76,11 +80,11 @@ class CardinalGrammar:
         if remainder == 0:
             return result
         elif remainder < 10:
-            return f"{result} {self.ones[remainder]}"
+            return f"{result} and {self.ones[remainder]}"
         elif remainder < 20:
-            return f"{result} {self.teens[remainder - 10]}"
+            return f"{result} and {self.teens[remainder - 10]}"
         else:
-            return f"{result} {self._two_digits(remainder)}"
+            return f"{result} and {self._two_digits(remainder)}"
     
     def get_fst(self):
         """Return a representation of the FST (for compatibility)."""
@@ -127,14 +131,12 @@ if __name__ == "__main__":
     ]
     
     print("Cardinal Number Grammar Test:")
-    print("=" * 50)
     for num in test_numbers:
         result = grammar.normalize_number(num)
         print(f"{num:>4} -> {result}")
     
     print("\n" + "=" * 50)
     print("Text Normalization Test:")
-    print("=" * 50)
     
     normalizer = TextNormalizer()
     
