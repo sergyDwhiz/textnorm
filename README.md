@@ -35,15 +35,22 @@ print(result)  # forty-two
 
 ## Testing
 
+Run the custom test suite:
 ```bash
 python tests/test_cardinal.py
+```
+
+Test against official HuggingFace dataset:
+```bash
+python3 test_official.py
 ```
 
 ### Test Results
 
 ![Test Results](results.png)
 
-Diagram showing the code passing test cases from the official HuggingFace test cases suite.
+Tested against the [official Digital Umuganda HuggingFace test cases](https://huggingface.co/datasets/DigitalUmuganda/Text_Normalization_Challenge_Unittests_Eng_Fra). All 5 test cases in the 0-1000 range pass with 100% accuracy.
+
 ## Implementation details
 
 The grammar has lookup tables for:
