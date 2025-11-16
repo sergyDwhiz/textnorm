@@ -1,10 +1,8 @@
 # Text Normalization - Cardinal Numbers
 
-Converts numbers from 0-1000 to words using FST approach.
-
 ## What it does
 
-It takes numbers in text and writes them out in plain language:
+This code takes numbers in text and writes them out in plain language:
 E.g:
 - "I have 3 dogs" becomes "I have three dogs"
 - "Room 42" becomes "Room forty two"
@@ -57,6 +55,10 @@ Uses a pure Python FST-inspired approach with:
 - 1000 is hardcoded as "one thousand"
 
 No external dependencies required.
+
+## Compiled Grammar (FAR File)
+
+**[`grammars/cardinal_grammar.far`](grammars/cardinal_grammar.far)** - Ready-to-use Finite-State Archive
 
 ## Requirements
 Python 3.7+ 
